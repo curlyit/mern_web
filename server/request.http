@@ -1,0 +1,53 @@
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+    "username": "curlyit",
+    "password": "12345"
+}
+
+###
+
+POST https://stark-depths-48562.herokuapp.com/api/auth/login
+Content-Type: application/json
+
+{
+    "username": "curlyit",
+    "password": "12345" 
+}
+
+###
+
+POST http://localhost:3000/api/posts/post
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2RhODUxZmZhNTRlYWE4MTUwZGE5NmMiLCJpYXQiOjE2NzUzMzYwMTR9.X8gQ3FRhuTj_ZKsjGLKSa6JhyDBQ0Rz7yOpvlKEL3is
+
+{
+    "tittle": "Book of John three",
+    "description": "Book time",
+    "url": "facebook.com"
+}
+
+###
+
+GET http://localhost:3344/api/posts/allPosts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2RhODUxZmZhNTRlYWE4MTUwZGE5NmMiLCJpYXQiOjE2NzU0MTAwNTZ9.G-FYA3DUdW0qWj4bMFQEAXlG55srxMWmzqDa1VVr8vw
+
+
+###
+
+PUT http://localhost:3344/api/posts/update/63db8e3d261be944ecf471d3
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2RhODUxZmZhNTRlYWE4MTUwZGE5NmMiLCJpYXQiOjE2NzU0MTAwNTZ9.G-FYA3DUdW0qWj4bMFQEAXlG55srxMWmzqDa1VVr8vw
+
+{
+    "tittle": "Doraemon",
+    "description": "Manga Japan",
+    "url": "",
+    "status": ""
+}
+
+###
+
+DELETE http://localhost:3344/api/posts/delete/63db8e3d261be944ecf471d3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2RhODUxZmZhNTRlYWE4MTUwZGE5NmMiLCJpYXQiOjE2NzU0MTAwNTZ9.G-FYA3DUdW0qWj4bMFQEAXlG55srxMWmzqDa1VVr8vw
