@@ -11,39 +11,53 @@ import Designer from "./views/Designer";
 import DetailProduct from "./views/DetailProduct";
 import Manage from "./views/Manage";
 import Trash from "./views/Trash";
+import Cart from "./views/Cart";
+import ReduxContextProvider from "./contexts/ReduxContext";
 
 function App() {
   return (
-    <AuthContextProvider>
-      <PostContextProvider>
-        <Router>
-          <Routes>
-            <Route path="/" element={<Landing />} />
-            <Route path="/login" element={<Auth authRoute="login" />} />
-            <Route path="/register" element={<Auth authRoute="register" />} />
+    <ReduxContextProvider>
+      <AuthContextProvider>
+        <PostContextProvider>
+          <Router>
+            <Routes>
+              <Route path="/" element={<Landing />} />
+              <Route path="/login" element={<Auth authRoute="login" />} />
+              <Route path="/register" element={<Auth authRoute="register" />} />
 
-            <Route
-              path="/dashboard"
-              element={<ProtectedRoute element={Dashboard} />}
-            />
-            <Route path="/about" element={<ProtectedRoute element={About} />} />
-            <Route
-              path="/manage"
-              element={<ProtectedRoute element={Manage} />}
-            />
-            <Route path="/trash" element={<ProtectedRoute element={Trash} />} />
-            <Route
-              path="/designer"
-              element={<ProtectedRoute element={Designer} />}
-            />
-            <Route
-              path="/detail/:id"
-              element={<ProtectedRoute element={DetailProduct} />}
-            />
-          </Routes>
-        </Router>
-      </PostContextProvider>
-    </AuthContextProvider>
+              <Route
+                path="/dashboard"
+                element={<ProtectedRoute element={Dashboard} />}
+              />
+              <Route
+                path="/about"
+                element={<ProtectedRoute element={About} />}
+              />
+              <Route
+                path="/manage"
+                element={<ProtectedRoute element={Manage} />}
+              />
+              <Route
+                path="/my-cart"
+                element={<ProtectedRoute element={Cart} />}
+              />
+              <Route
+                path="/trash"
+                element={<ProtectedRoute element={Trash} />}
+              />
+              <Route
+                path="/designer"
+                element={<ProtectedRoute element={Designer} />}
+              />
+              <Route
+                path="/detail/:id"
+                element={<ProtectedRoute element={DetailProduct} />}
+              />
+            </Routes>
+          </Router>
+        </PostContextProvider>
+      </AuthContextProvider>
+    </ReduxContextProvider>
   );
 }
 

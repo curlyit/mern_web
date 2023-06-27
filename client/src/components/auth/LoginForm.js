@@ -1,15 +1,11 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState, useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import AlertMessage from "../layouts/AlertMessage";
-import { PostContext } from "../../contexts/PostContext";
-import Notification from "../../views/Notification";
 
 const LoginForm = () => {
   //Context
   const { loginUser } = useContext(AuthContext);
-  const { setNotification, showNotificationModal, setShowNotificationModal } =
-    useContext(PostContext);
 
   //Local state
   const [loginForm, setLoginForm] = useState({
@@ -28,20 +24,7 @@ const LoginForm = () => {
     event.preventDefault();
 
     try {
-      const { success, message } = await loginUser(loginForm);
-      // if (loginData.success) {
-      //   // navigate("/dashboard");
-      //   // Không cần điều hướng vì loginUser đã dùng AuthContext để điều hướng
-      //   // khi login thành công.
-      // } else {
-      //   setAlert({ type: "danger", message: loginData.message });
-      //   setTimeout(() => setAlert(null), 3000);
-      // }
-      setNotification({
-        success: success,
-        message: message,
-      });
-      await setShowNotificationModal(true);
+      await loginUser(loginForm);
     } catch (error) {
       console.log(error);
     }
@@ -90,7 +73,6 @@ const LoginForm = () => {
           </button>
         </Link>
       </p>
-      {showNotificationModal && <Notification />}
     </>
   );
 };

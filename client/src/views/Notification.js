@@ -1,14 +1,19 @@
 import React, { useContext, useEffect, useState } from "react";
-import { PostContext } from "../contexts/PostContext";
+import { ReduxContext } from "../contexts/ReduxContext";
+import { AuthContext } from "../contexts/AuthContext";
 
 const Notification = ({ success, message }) => {
-  const { notification, setShowNotificationModal } = useContext(PostContext);
+  const { notification, showNotification, setShowNotificationModal } =
+    useContext(ReduxContext);
+
+  const { loadUser } = useContext(AuthContext);
 
   const handleClose = () => {
     setShowNotificationModal(false);
+    loadUser();
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {}, [showNotification]);
 
   return (
     <>

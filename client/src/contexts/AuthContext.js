@@ -1,8 +1,10 @@
-import { createContext, useReducer, useEffect } from "react";
+import { createContext, useReducer, useEffect, useContext } from "react";
 import { authReducer } from "../reducers/authReducer";
 import { apiUrl, LOCAL_STORAGE_TOKEN_NAME } from "./constants";
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
+import { ReduxContext } from "./ReduxContext";
+import Notification from "../views/Notification";
 
 export const AuthContext = createContext();
 
@@ -12,6 +14,9 @@ const AuthContextProvider = ({ children }) => {
     isAuthenticated: false,
     user: null,
   });
+
+  const { showNotificationModal, setShowNotificationModal, setNotification } =
+    useContext(ReduxContext);
 
   //Authenticate User
   const loadUser = async () => {
@@ -50,9 +55,13 @@ const AuthContextProvider = ({ children }) => {
           LOCAL_STORAGE_TOKEN_NAME,
           response.data.accessToken
         );
-      }
 
-      await loadUser();
+        setNotification({
+          success: response.data.success,
+          message: response.data.message,
+        });
+        setShowNotificationModal(true);
+      }
 
       return response.data;
     } catch (error) {
@@ -70,9 +79,13 @@ const AuthContextProvider = ({ children }) => {
           LOCAL_STORAGE_TOKEN_NAME,
           response.data.accessToken
         );
-      }
 
-      await loadUser();
+        setNotification({
+          success: response.data.success,
+          message: response.data.message,
+        });
+        setShowNotificationModal(true);
+      }
 
       return response.data;
     } catch (error) {
@@ -88,15 +101,25 @@ const AuthContextProvider = ({ children }) => {
       type: "SET_AUTH",
       payload: { isAuthenticated: false, user: null },
     });
+    localStorage.setItem("item-navbar", "home");
+    localStorage.removeItem("post");
+    localStorage.removeItem("images");
   };
 
   //context data
-  const AuthContextData = { loginUser, registerUser, logoutUser, authState };
+  const AuthContextData = {
+    loadUser,
+    loginUser,
+    registerUser,
+    logoutUser,
+    authState,
+  };
 
   // return provider
   return (
     <AuthContext.Provider value={AuthContextData}>
       {children}
+      {showNotificationModal && <Notification />}
     </AuthContext.Provider>
   );
 };

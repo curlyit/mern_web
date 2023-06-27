@@ -4,13 +4,10 @@ import ActionButtons from "../components/posts/ActionButtons";
 import AddPostModal from "../components/posts/AddPostModal";
 import UpdatePostModal from "../components/posts/UpdatePostModal";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../contexts/AuthContext";
-import axios from "axios";
-import { apiUrl } from "../contexts/constants";
 
 const Manage = () => {
   const {
-    postState: { post, posts, postsLoading },
+    postState: { post, posts },
     getPosts,
     postsDeleted,
     getPostsDeleted,

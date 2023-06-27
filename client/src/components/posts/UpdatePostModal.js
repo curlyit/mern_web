@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { PostContext } from "../../contexts/PostContext";
+import { ReduxContext } from "../../contexts/ReduxContext";
 import Notification from "../../views/Notification";
 
 const UpdatePostModal = () => {
@@ -8,12 +9,12 @@ const UpdatePostModal = () => {
   const {
     postState: { post, images },
     showUpdatePostModal,
-    setNotification,
     setShowUpdatePostModal,
-    showNotificationModal,
-    setShowNotificationModal,
     updatePost,
   } = useContext(PostContext);
+
+  const { showNotificationModal, setShowNotificationModal, setNotification } =
+    useContext(ReduxContext);
 
   // State
   const [updatedPost, setUpdatedPost] = useState(post);

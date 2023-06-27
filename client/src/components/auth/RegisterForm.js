@@ -1,14 +1,11 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState, useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import AlertMessage from "../layouts/AlertMessage";
-import { PostContext } from "../../contexts/PostContext";
 import Notification from "../../views/Notification";
 
 const RegisterForm = () => {
   const { registerUser } = useContext(AuthContext);
-  const { setNotification, showNotificationModal, setShowNotificationModal } =
-    useContext(PostContext);
 
   //Local state
   const [registerForm, setRegisterForm] = useState({
@@ -41,12 +38,7 @@ const RegisterForm = () => {
     }
 
     try {
-      const { success, message } = await registerUser(registerForm);
-      setNotification({
-        success: success,
-        message: message,
-      });
-      setShowNotificationModal(true);
+      await registerUser(registerForm);
     } catch (error) {
       console.log(error);
     }
@@ -113,7 +105,6 @@ const RegisterForm = () => {
           </button>
         </Link>
       </p>
-      {showNotificationModal && <Notification />}
     </>
   );
 };

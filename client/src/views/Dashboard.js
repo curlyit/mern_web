@@ -4,7 +4,6 @@ import { useContext, useEffect } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import SinglePost from "../components/posts/SinglePost";
 import AddPostModal from "../components/posts/AddPostModal";
-import addIcon from "../assets/plus-circle-fill.svg";
 import UpdatePostModal from "../components/posts/UpdatePostModal";
 
 const Dashboard = () => {
@@ -81,13 +80,6 @@ const Dashboard = () => {
             </div>
           ))} */}
         </div>
-
-        <button
-          className="fixed bottom-4 right-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-full"
-          onClick={setShowAddPostModal.bind(this, true)}
-        >
-          <img src={addIcon} alt="add-post" className="w-12 h-12" />
-        </button>
       </>
     );
   }

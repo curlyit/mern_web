@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import logo from "../../img/dress.png";
 import logoutIcon from "../../assets/logout.svg";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
-import { useState } from "react";
+import { ReduxContext } from "../../contexts/ReduxContext";
 
 const NavbarMenu = () => {
   const {
@@ -12,6 +12,23 @@ const NavbarMenu = () => {
     },
     logoutUser,
   } = useContext(AuthContext);
+
+  const {
+    redux: { itemNavbar },
+    setItemNavbar,
+    loadRedux,
+  } = useContext(ReduxContext);
+
+  //xử lý bôi đậm thành phần được chọn navbar
+  const getItemClassName = (item) => {
+    return `${
+      itemNavbar === item ? "bg-[#aec2c5] " : ""
+    }${"font-weight-bolder text-[#272375] text-2xl p-3 m-3 rounded-md hover:bg-[#aec2c5]"}`;
+  };
+
+  useEffect(() => {
+    loadRedux();
+  }, [itemNavbar]);
 
   const logout = () => logoutUser();
 
@@ -29,28 +46,39 @@ const NavbarMenu = () => {
 
       <div className="flex ml-[100px] my-auto items-center text-center font-medium text-base rounded-lg h-full">
         <Link
-          className="font-weight-bolder text-[#272375] text-2xl p-3 m-3 rounded-md hover:bg-[#aec2c5] focus:bg-[#aec2c5]"
+          className={getItemClassName("home")}
           to="/dashboard"
+          onClick={() => setItemNavbar("home")}
         >
           <i class="fa-solid fa-house-chimney"></i> Home
         </Link>
         <Link
-          className="font-weight-bolder text-[#272375] text-2xl p-3 m-3 rounded-md hover:bg-[#aec2c5] focus:bg-[#aec2c5]"
+          className={getItemClassName("designer")}
           to="/designer"
+          onClick={() => setItemNavbar("designer")}
         >
           <i class="fa-solid fa-person-dots-from-line"></i> Designer
         </Link>
         <Link
-          className="font-weight-bolder text-[#272375] text-2xl p-3 m-3 rounded-md hover:bg-[#aec2c5] focus:bg-[#aec2c5]"
+          className={getItemClassName("about")}
           to="/about"
+          onClick={() => setItemNavbar("about")}
         >
           <i class="fa-solid fa-circle-info"></i> About
         </Link>
         <Link
-          className="font-weight-bolder text-[#272375] text-2xl p-3 m-3 rounded-md hover:bg-[#aec2c5] focus:bg-[#aec2c5]"
+          className={getItemClassName("username")}
           to="/manage"
+          onClick={() => setItemNavbar("username")}
         >
           <i class="fa-solid fa-gears"></i> {username}
+        </Link>
+        <Link
+          className={getItemClassName("cart")}
+          to="/my-cart"
+          onClick={() => setItemNavbar("cart")}
+        >
+          <i class="fa-solid fa-cart-shopping"></i> My cart
         </Link>
       </div>
 

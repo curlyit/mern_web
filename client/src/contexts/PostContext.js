@@ -20,20 +20,16 @@ const PostContextProvider = ({ children }) => {
     post: null,
     posts: [],
     images: [],
-    postsLoading: true,
+    postslooading: true,
   });
 
   const [showAddPostModal, setShowAddPostModal] = useState(false);
   const [showUpdatePostModal, setShowUpdatePostModal] = useState(false);
-  const [showNotificationModal, setShowNotificationModal] = useState(false);
   const [postsDeleted, setPostsDeleted] = useState({
     total: 0,
     allPostsDeleted: [],
   });
-  const [notification, setNotification] = useState({
-    success: false,
-    message: "",
-  });
+
   const [showToast, setShowToast] = useState({
     show: false,
     message: "",
@@ -153,10 +149,6 @@ const PostContextProvider = ({ children }) => {
     setShowAddPostModal,
     showUpdatePostModal,
     setShowUpdatePostModal,
-    notification,
-    setNotification,
-    showNotificationModal,
-    setShowNotificationModal,
     postsDeleted,
     getPostsDeleted,
     addPost,
