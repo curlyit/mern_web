@@ -1,9 +1,9 @@
-import { SET_ITEM_NAVBAR } from "../contexts/constants";
+import { SET_DARK_MODE, SET_ITEM_NAVBAR } from "../contexts/constants";
 
 export const reduxReducer = (state, action) => {
   const {
     type,
-    payload: { itemNavbar },
+    payload: { itemNavbar, darkMode },
   } = action;
 
   switch (type) {
@@ -11,6 +11,12 @@ export const reduxReducer = (state, action) => {
       return {
         ...state,
         itemNavbar: itemNavbar,
+      };
+
+    case SET_DARK_MODE:
+      return {
+        ...state,
+        darkMode: darkMode,
       };
 
     default:

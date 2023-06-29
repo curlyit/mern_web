@@ -1,13 +1,14 @@
 import React from "react";
+import DarkMode from "../components/layouts/ToggleSwitchDarkMode";
 
 const Designer = () => {
-  return (
+  let body = (
     <>
-      <section className="max-w-7xl mx-auto px-[15px]">
-        <h1 className="mt-[50px] mb-[20px] text-[#18181B] text-[36px] font-semibold max-w-[400px]">
+      <div className="max-w-7xl mx-auto px-[15px] ">
+        <h1 className="mt-[50px] mb-[20px] text-[#161649] text-[36px] font-semibold max-w-[400px]">
           Read latest collection
         </h1>
-        <p className="text-gray-500 text-lg font-serif max-w-[400px] mb-[70px]">
+        <p className="text-[#4a0c0c] text-lg font-serif max-w-[400px] mb-[70px]">
           Create custom landing pages with Rareblocks that converts more
           visitors than any website.
         </p>
@@ -121,7 +122,13 @@ const Designer = () => {
             </a>
           </div>
         </div>
-      </section>
+      </div>
+    </>
+  );
+
+  return (
+    <>
+      <DarkMode body={body} />
     </>
   );
 };

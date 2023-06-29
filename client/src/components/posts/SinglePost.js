@@ -29,7 +29,7 @@ const SinglePost = ({ post: { _id, status, tittle, description, price } }) => {
   };
 
   return (
-    <div className="shadow bg-white rounded-lg border">
+    <div className="shadow-lg bg-[#f7f5f7] rounded-lg border font">
       <div
         className={`p-4 border-b ${
           status === "LEARNED"
@@ -44,7 +44,7 @@ const SinglePost = ({ post: { _id, status, tittle, description, price } }) => {
           onClick={handleClickDetail}
         >
           <div className="flex justify-between">
-            <p className="text-red-700">{tittle}</p>
+            <p className="text-[#c01db0] text-xl font-medium">{tittle}</p>
           </div>
           <div className="text-gray-600 text-sm mt-2">
             {truncateDescription(`${description}`)}
@@ -52,11 +52,13 @@ const SinglePost = ({ post: { _id, status, tittle, description, price } }) => {
         </div>
       </div>
       <div className="flex justify-between">
+        <div className="p-4 flex">
+          <p>
+            Supplier by <strong className="cursor-pointer">{username}</strong>
+          </p>
+        </div>
         <div className="p-4 flex justify-center items-center font-semibold">
           Price: {price} <img className="w-6 h-6" src={usdIcon} alt="" />
-        </div>
-        <div className="p-4 flex">
-          <p>Supplier by {username}</p>
         </div>
       </div>
     </div>

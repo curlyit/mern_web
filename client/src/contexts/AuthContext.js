@@ -102,6 +102,7 @@ const AuthContextProvider = ({ children }) => {
       payload: { isAuthenticated: false, user: null },
     });
     localStorage.setItem("item-navbar", "home");
+    localStorage.setItem("dark-mode", false);
     localStorage.removeItem("post");
     localStorage.removeItem("images");
   };

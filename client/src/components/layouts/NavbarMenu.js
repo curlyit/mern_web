@@ -16,7 +16,7 @@ const NavbarMenu = () => {
   const {
     redux: { itemNavbar },
     setItemNavbar,
-    loadRedux,
+    loadItemNavbar,
   } = useContext(ReduxContext);
 
   //xử lý bôi đậm thành phần được chọn navbar
@@ -27,13 +27,13 @@ const NavbarMenu = () => {
   };
 
   useEffect(() => {
-    loadRedux();
+    loadItemNavbar();
   }, [itemNavbar]);
 
   const logout = () => logoutUser();
 
   return (
-    <div className="bg-[#d5eaea] flex">
+    <div className="bg-[#b597f6] flex sticky top-0 z-10">
       <div>
         <img
           src={logo}
@@ -84,7 +84,7 @@ const NavbarMenu = () => {
 
       <div className="flex ml-auto items-center">
         <button
-          className="flex rounded-xl bg-[#e8ae5d] justify-center mx-5 p-3 font-semibold text-2xl"
+          className="flex rounded-xl bg-[#cbcf7e] justify-center mx-5 p-3 font-semibold text-2xl"
           onClick={logout}
         >
           <img

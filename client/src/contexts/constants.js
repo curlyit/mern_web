@@ -16,3 +16,4 @@ export const UPDATE_POST = "UPDATE_POST";
 export const FIND_POST = "FIND_POST";
 export const FIND_IMAGE = "FIND_IMAGE";
 export const SET_ITEM_NAVBAR = "SET_ITEM_NAVBAR";
+export const SET_DARK_MODE = "SET_DARK_MODE";

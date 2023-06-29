@@ -140,6 +140,3 @@ const UpdatePostModal = () => {
 };
 
 export default UpdatePostModal;
-
-// lỗi không hiện thông báo sau khi update thành công
-// lỗi actionButton còn giữ thông tin của post trước...

@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/curlyit/curlyit.git"
+    "url": "git+https://github.com/curlyit/mern_web.git"
   },
   "keywords": [
     "curlyit1002"
@@ -18,9 +18,9 @@
   "author": "curlyit",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/curlyit/curlyit/issues"
+    "url": "https://github.com/curlyit/mern_web.git/issues"
   },
-  "homepage": "https://github.com/curlyit/curlyit#readme",
+  "homepage": "https://github.com/curlyit/mern_web.git#readme",
   "dependencies": {
     "argon2": "^0.30.3",
     "cors": "^2.8.5",

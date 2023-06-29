@@ -3,8 +3,7 @@ import { PostContext } from "../contexts/PostContext";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import SinglePost from "../components/posts/SinglePost";
-import AddPostModal from "../components/posts/AddPostModal";
-import UpdatePostModal from "../components/posts/UpdatePostModal";
+import DarkMode from "../components/layouts/ToggleSwitchDarkMode";
 
 const Dashboard = () => {
   //context
@@ -18,8 +17,6 @@ const Dashboard = () => {
     postState: { post, posts, postsLoading },
     getPosts,
     setShowAddPostModal,
-    showToast: { show, message, type },
-    setShowToast,
   } = useContext(PostContext);
 
   const groupedPosts = posts.reduce((acc, post) => {
@@ -31,6 +28,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     getPosts();
+    // loadDarkMode();
   }, [posts]);
 
   let body = null;
@@ -58,10 +56,15 @@ const Dashboard = () => {
   } else {
     body = (
       <>
-        <div className="">
+        <div className="px-[15px]">
           {Object.entries(groupedPosts).map(([type, group]) => (
             <>
-              <h2 className="text-xl font-semibold ml-2">{type}</h2>
+              <div className="flex items-center mt-8">
+                <div className="inline-block mr-2 w-3 h-10 bg-[#867878] rounded-md"></div>
+                <h2 className="inline-block text-2xl font-semibold text-[#161649] ">
+                  {type}
+                </h2>
+              </div>
               <div
                 className="grid grid-cols-1 md:grid-cols-3 gap-4 mx-auto mb-4"
                 key={type}
@@ -74,11 +77,6 @@ const Dashboard = () => {
               </div>
             </>
           ))}
-          {/* {posts.map((post) => (
-            <div key={post._id} className="my-2">
-              <SinglePost post={post} />
-            </div>
-          ))} */}
         </div>
       </>
     );
@@ -86,9 +84,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="mx-5">{body}</div>
-      <AddPostModal />
-      {post !== null && <UpdatePostModal />}
+      <DarkMode body={body} />
     </>
   );
 };

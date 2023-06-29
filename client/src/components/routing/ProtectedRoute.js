@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import NavbarMenu from "../layouts/NavbarMenu";
+import Footer from "../layouts/Footer";
 
 const ProtectedRoute = ({ element: Component, ...rest }) => {
   const {
@@ -15,6 +16,7 @@ const ProtectedRoute = ({ element: Component, ...rest }) => {
     <>
       <NavbarMenu />
       <Component {...rest} />
+      <Footer />
     </>
   ) : (
     <Navigate to="/login" replace={true} />

@@ -4,6 +4,7 @@ import ActionButtons from "../components/posts/ActionButtons";
 import AddPostModal from "../components/posts/AddPostModal";
 import UpdatePostModal from "../components/posts/UpdatePostModal";
 import { useNavigate } from "react-router-dom";
+import DarkMode from "../components/layouts/ToggleSwitchDarkMode";
 
 const Manage = () => {
   const {
@@ -33,16 +34,16 @@ const Manage = () => {
     setTotalNumber(postsDeleted.total);
   }, [posts]);
 
-  return (
+  let body = (
     <>
-      <div className="container mx-auto mt-5">
-        <div className="text-xl font-semibold">
+      <div className="container mx-auto mt-5 px-[15px] w-full">
+        <div className="text-xl font-semibold text-[#161649]">
           <div
             className="inline-block cursor-pointer p-1 mb-2"
             onClick={handleTrash}
           >
             <i className="inline-block fa-regular fa-trash-can pr-2"></i>
-            <p className="inline-block">Trash ({totalNumber})</p>
+            <p className="inline-block ">Trash ({totalNumber})</p>
           </div>
           <br />
           <div
@@ -80,6 +81,12 @@ const Manage = () => {
       </div>
       <AddPostModal />
       {post !== null && <UpdatePostModal />}
+    </>
+  );
+
+  return (
+    <>
+      <DarkMode body={body} />
     </>
   );
 };

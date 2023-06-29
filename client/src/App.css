@@ -1,3 +1,14 @@
+html, body {
+	height: 100%;
+	margin: 0;
+	display: grid;
+	
+  }
+  
+  #root {
+	grid-area: 1 / 1 / 2 / 2;
+  }
+  
 .landing {
 	position: relative;
 	background: url('./assets/fs1.avif') no-repeat center center/cover;
@@ -8,7 +19,7 @@
 	background-color: rgba(0, 0, 0, 0.5);
 	height: 100%;
 }
-
+ 
 .landing-inner {
 	height: 100%;
 	margin: auto;
@@ -116,4 +127,12 @@ button.post-button.btn:active {
 }
 p > a{
 	margin-left: 5px;
+}
+
+.darkmode-input:checked + div {
+    background-color: #3a66f7;
+}
+.darkmode-input:checked + div .darkmode-spinner {
+    transform: translateX(30px);
+    background-color: white;
 }

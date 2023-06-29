@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { PostContext } from "../contexts/PostContext";
 import axios from "axios";
 import { apiUrl } from "../contexts/constants";
+import DarkMode from "../components/layouts/ToggleSwitchDarkMode";
 
 const Trash = () => {
   const {
@@ -33,7 +34,7 @@ const Trash = () => {
     getPostsDeleted();
   }, [allPostsDeleted]);
 
-  return (
+  let body = (
     <div className="container mx-auto mt-5">
       <table className="min-w-full bg-white border border-gray-300 mt-5">
         <thead className="font-semibold text-xl">
@@ -69,6 +70,8 @@ const Trash = () => {
       </table>
     </div>
   );
+
+  return <DarkMode body={body} />;
 };
 
 export default Trash;
